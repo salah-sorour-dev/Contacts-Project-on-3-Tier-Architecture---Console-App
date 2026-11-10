@@ -30,9 +30,33 @@ namespace ContactConsolApp
 
         }
 
+        static void testAddNewContact()
+        {
+            clsContact Contact1 = new clsContact();
+
+            Contact1.FirstName = "Sofian";
+            Contact1.LastName = "Sorour";
+            Contact1.Email = "S@s.com";
+                        Contact1.Phone = "123456789";
+            Contact1.Address = "123 Main St";
+            Contact1.DateOfBirth = new DateTime(1998, 2, 14, 10, 30, 0);
+            Contact1.CountryID = 1;
+            Contact1.ImagePath = "";
+
+            if (Contact1.Save())
+            {
+                Console.WriteLine("Contact [" + Contact1.ID + "] saved successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Error saving contact [" + Contact1.ID + "]!");
+            }
+        }
+
         static void Main(string[] args)
         {
-            testFindContact(8);
+            //testFindContact(8);
+            testAddNewContact();
         }
     }
 }
