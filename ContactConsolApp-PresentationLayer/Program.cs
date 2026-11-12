@@ -107,13 +107,25 @@ namespace ContactConsolApp
             }
         }
 
+
+        static void testIsContactExist(int ID)
+        {
+            if (clsContact.IsContactExist(ID))
+                Console.WriteLine("Yes, Contact is there.");
+            else
+                Console.WriteLine("No, Contact is not there.");
+        }
+
+
         static void Main(string[] args)
         {
             //testFindContact(8);
             //testAddNewContact();
             //testUpdateContact(2);
             //testDeleteContact(2);
-            ListContacts();
+            //ListContacts();
+            testIsContactExist(1);
+            testIsContactExist(100);
         }
     }
 }
