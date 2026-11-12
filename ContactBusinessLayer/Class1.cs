@@ -69,11 +69,11 @@ namespace ContactBusinessLayer
                 this.DateOfBirth, this.CountryID, this.ImagePath);
         }
 
-
         public static bool DeleteContact(int ID)
         {
             return clsContactDataAccess.DeleteContact(ID);
         }
+
 
         public static clsContact Find(int ID)
         {
@@ -117,6 +117,13 @@ namespace ContactBusinessLayer
 
             return false;
         }
+
+        public static DataTable GetAllContacts()
+        {
+            return clsContactDataAccess.GetAllContacts();
+        }
+
+        
 
     }
 }
