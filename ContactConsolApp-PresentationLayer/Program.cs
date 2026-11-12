@@ -81,11 +81,26 @@ namespace ContactConsolApp
             }
         }
 
+
+        static void testDeleteContact(int ID)
+        {
+            if (clsContact.DeleteContact(ID))
+            
+                Console.WriteLine("Contact [" + ID + "] deleted successfully!");
+
+            else
+                
+                Console.WriteLine("Error deleting contact [" + ID + "]!");
+
+
+        }
+
         static void Main(string[] args)
         {
             //testFindContact(8);
             //testAddNewContact();
-            testUpdateContact(2);
+            //testUpdateContact(2);
+            testDeleteContact(2);
         }
     }
 }
