@@ -132,5 +132,62 @@ namespace ConatctsDataAccessLayer
 
         }
 
+
+        public static bool UpdateContact(int ID, string FirstName, string LastName, string Email, string Phone, string Address,
+            DateTime DateOfBirth, int CountryID, string ImagePath)
+        {
+
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "UPDATE Contacts SET FirstName = @FirstName, LastName = @LastName, Email = @Email, Phone = @Phone, Address = @Address, DateOfBirth = @DateOfBirth," +
+                " CountryID = @CountryID, ImagePath = @ImagePath WHERE ContactID = @ContactID";
+
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@ContactID", ID);
+            command.Parameters.AddWithValue("@FirstName", FirstName);
+            command.Parameters.AddWithValue("@LastName", LastName);
+            command.Parameters.AddWithValue("@Email", Email);
+            command.Parameters.AddWithValue("@Phone", Phone);
+            command.Parameters.AddWithValue("@Address", Address);
+            command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
+            command.Parameters.AddWithValue("@CountryID", CountryID);
+
+            if (ImagePath != "")
+            {
+                command.Parameters.AddWithValue("@ImagePath", ImagePath);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+            }
+
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine("Error: " + ex.Message);
+                return false;
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+
+
+        }
+
     }
 }

@@ -53,10 +53,39 @@ namespace ContactConsolApp
             }
         }
 
+        static void testUpdateContact(int ID)
+        {
+            clsContact Contact1 = clsContact.Find(ID);
+
+
+            if (Contact1 != null)
+            {
+                Contact1.FirstName = "khalid";
+                Contact1.LastName = "salem";
+                Contact1.Email = "K@g.com";
+                Contact1.Phone = "987654121";
+                Contact1.Address = "457 Main St";
+                Contact1.DateOfBirth = new DateTime(1999, 5, 20, 15, 45, 0);
+                Contact1.CountryID = 1;
+                Contact1.ImagePath = "";
+
+
+                if (Contact1.Save())
+                {
+                    Console.WriteLine("Contact [" + Contact1.ID + "] updated successfully!");
+                }
+                else
+                {
+                    Console.WriteLine("Error updating contact [" + Contact1.ID + "]!");
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             //testFindContact(8);
-            testAddNewContact();
+            //testAddNewContact();
+            testUpdateContact(2);
         }
     }
 }

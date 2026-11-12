@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics.SymbolStore;
 using ConatctsDataAccessLayer;
 
 namespace ContactBusinessLayer
@@ -61,6 +62,13 @@ namespace ContactBusinessLayer
             return (this.ID != -1);
         }
 
+
+        private bool _UpdateContact()
+        {
+            return clsContactDataAccess.UpdateContact(this.ID, this.FirstName, this.LastName, this.Email, this.Phone, this.Address,
+                this.DateOfBirth, this.CountryID, this.ImagePath);
+        }
+
         public static clsContact Find(int ID)
         {
             string FirstName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
@@ -98,8 +106,7 @@ namespace ContactBusinessLayer
                     }
 
                 case enMode.Update:
-                    //return _UpdateContact();
-                    return false;
+                    return _UpdateContact();
             }
 
             return false;
