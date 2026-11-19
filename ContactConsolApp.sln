@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactConsolApp-Presentati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactBusinessLayer", "ContactBusinessLayer\ContactBusinessLayer.csproj", "{CDAD5158-3B1D-4546-A010-ED55D1EFF652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConatctsDataAccessLayer", "ConatctsDataAccessLayer\ConatctsDataAccessLayer.csproj", "{95CB087C-95A3-4BBC-BD5D-F54D646414E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsDataAccessLayer", "ContactsDataAccessLayer\ContactsDataAccessLayer.csproj", "{95CB087C-95A3-4BBC-BD5D-F54D646414E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

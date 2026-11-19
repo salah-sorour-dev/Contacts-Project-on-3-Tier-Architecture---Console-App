@@ -1,0 +1,81 @@
+﻿using System;
+using System.Data;
+using ConatctsDataAccessLayer;
+using ContactsDataAccessLayer;
+using Microsoft.SqlServer.Server;
+
+
+
+namespace ContactBusinessLayer
+{
+    public class clsCountry
+    {
+
+        public enum  enMode { AddNew = 0, Update = 1 };
+        
+        public enMode Mode = enMode.AddNew;
+
+        public int ID { get; set; }
+        public string Name { get; set; }
+
+        public clsCountry()
+        {
+            this.ID = -1;
+            this.Name = "";
+
+            Mode = enMode.AddNew;
+        }
+
+        private clsCountry(int ID, string Name)
+        {
+            this.ID = ID;
+            this.Name = Name;
+
+            Mode = enMode.Update;
+
+        }
+
+        public static clsCountry Find(int ID)
+        {
+            string CountryName = "";
+
+            if (clsCountryDataAccess.GetCountryInfoByID(ID, ref CountryName))
+            {
+                return new clsCountry(ID, CountryName);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        public static clsCountry Find(string CountryName)
+        {
+            int CountryID = -1;
+
+            if (clsCountryDataAccess.GetCountryInfoByName(ref CountryID, CountryName))
+            {
+                return new clsCountry(CountryID, CountryName);
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        public static bool IsCountryExist(int ID)
+        {
+           return clsCountryDataAccess.IsCountryExist(ID);
+        }
+
+        public static bool IsCountryExist(string CountryName)
+        {
+            return clsCountryDataAccess.IsCountryExist(CountryName);
+        }
+
+
+    }
+}

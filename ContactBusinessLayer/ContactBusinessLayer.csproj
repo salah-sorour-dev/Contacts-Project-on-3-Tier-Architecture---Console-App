@@ -41,13 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CountryBusiness.cs" />
+    <Compile Include="ContactBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConatctsDataAccessLayer\ConatctsDataAccessLayer.csproj">
+    <ProjectReference Include="..\ContactsDataAccessLayer\ContactsDataAccessLayer.csproj">
       <Project>{95cb087c-95a3-4bbc-bd5d-f54d646414e2}</Project>
-      <Name>ConatctsDataAccessLayer</Name>
+      <Name>ContactsDataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

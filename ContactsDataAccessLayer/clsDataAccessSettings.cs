@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace ConatctsDataAccessLayer
+namespace ContactsDataAccessLayer
 {
     static class clsDataAccessSettings
     {

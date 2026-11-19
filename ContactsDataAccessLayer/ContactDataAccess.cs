@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Security.Policy;
 
 
-namespace ConatctsDataAccessLayer
+namespace ContactsDataAccessLayer
 {
     public class clsContactDataAccess
     {
@@ -300,6 +302,8 @@ namespace ConatctsDataAccessLayer
 
             return isFound;
         }
+
+
 
     }
 }

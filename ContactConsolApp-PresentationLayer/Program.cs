@@ -2,9 +2,10 @@
 using System.Data;
 using ContactBusinessLayer;
 
+
 namespace ContactConsolApp
 {
-    internal class Program
+    public class Program
     {
 
         static void testFindContact(int ID)
@@ -34,12 +35,12 @@ namespace ContactConsolApp
         {
             clsContact Contact1 = new clsContact();
 
-            Contact1.FirstName = "Sofian";
+            Contact1.FirstName = "salah eddine";
             Contact1.LastName = "Sorour";
-            Contact1.Email = "S@s.com";
-                        Contact1.Phone = "123456789";
+            Contact1.Email = "Ss@s.com";
+            Contact1.Phone = "123456789";
             Contact1.Address = "123 Main St";
-            Contact1.DateOfBirth = new DateTime(1998, 2, 14, 10, 30, 0);
+            Contact1.DateOfBirth = new DateTime(2001, 2, 14, 10, 30, 0);
             Contact1.CountryID = 1;
             Contact1.ImagePath = "";
 
@@ -117,15 +118,80 @@ namespace ContactConsolApp
         }
 
 
+        static void testFindCountryByID(int ID)
+        {
+            clsCountry country = clsCountry.Find(ID); 
+
+            if (country != null)
+            {
+                Console.WriteLine("Country ID: " + country.ID);
+                Console.WriteLine("Country Name: " + country.Name);
+            }
+            else
+            {
+                Console.WriteLine("Country [" + ID + "] not found!");
+            }
+        }
+
+        static void testFindCountryByName(string name)
+        {
+            clsCountry country = clsCountry.Find(name); 
+            if (country != null)
+            {
+                Console.WriteLine("Country ID: " + country.ID);
+                Console.WriteLine("Country Name: " + country.Name);
+            }
+            else
+            {
+                Console.WriteLine("Country [" + name + "] not found!");
+            }
+        }
+
+
+
+        static void testIsCountryExistByID(int ID)
+        {
+            if (clsCountry.IsCountryExist(ID))
+
+                Console.WriteLine("Yes, Country is there.");
+
+            else
+
+                Console.WriteLine("No, Country is not there.");
+
+        }
+
+        static void testIsCountryExistByName(string Name)
+        {
+            if (clsCountry.IsCountryExist(Name))
+
+                Console.WriteLine("Yes, Country is there.");
+
+            else
+
+                Console.WriteLine("No, Country is not there.");
+        }
+
+
+
+
+
+
         static void Main(string[] args)
         {
-            //testFindContact(8);
+            //testFindContact(10);
             //testAddNewContact();
             //testUpdateContact(2);
-            //testDeleteContact(2);
+            //testDeleteContact(10);
             //ListContacts();
-            testIsContactExist(1);
-            testIsContactExist(100);
+            //testIsContactExist(1);
+            //testIsContactExist(100);
+
+
+            //testFindCountryByID(1);
+            //testFindCountryByName("Morocco");
+            //testIsCountryExistByID(1);
+            testIsCountryExistByName("Canada");
         }
     }
 }

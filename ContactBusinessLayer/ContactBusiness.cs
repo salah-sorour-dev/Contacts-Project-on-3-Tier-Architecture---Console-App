@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.Diagnostics.SymbolStore;
+using System.Runtime.CompilerServices;
+using ContactBusinessLayer;
 using ConatctsDataAccessLayer;
+using ContactsDataAccessLayer;
 
 namespace ContactBusinessLayer
 {
@@ -128,6 +131,8 @@ namespace ContactBusinessLayer
         {
             return clsContactDataAccess.IsContactExist(ID);
         }
+
+
 
         
 
