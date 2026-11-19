@@ -77,5 +77,47 @@ namespace ContactBusinessLayer
         }
 
 
+        private bool _AddNewCountry()
+        {
+            //call Data Access Layer
+
+            this.ID = clsCountryDataAccess.AddNewCountry(this.Name);
+            return (this.ID != -1);
+        }
+
+        private bool _UpdateCountry()
+        {
+            //call Data Access Layer
+
+            return clsCountryDataAccess.UpdateCountry(this.ID, this.Name);
+
+        }
+
+
+
+        public bool Save()
+        {
+            switch (Mode)
+            {
+                case enMode.AddNew:
+                    if (_AddNewCountry())
+                    {
+                        Mode = enMode.Update;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                case enMode.Update:
+
+                    return _UpdateCountry();
+            }
+
+            return false;
+        }
+
+
     }
 }

@@ -173,6 +173,48 @@ namespace ContactConsolApp
         }
 
 
+        static void testAddNewCountry()
+        {
+            clsCountry country1 = new clsCountry();
+            country1.Name = "Morocco";
+            if (country1.Save())
+            {
+                Console.WriteLine("Country [" + country1.ID + "] saved successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Error saving country [" + country1.ID + "]!");
+            }
+        }
+
+
+        static void testUpdateCountry(int ID)
+        {
+            clsCountry country1 = clsCountry.Find(ID);
+
+            if (country1 != null)
+            {
+                //Update what ever info you want
+
+                country1.Name = "Saudi Arabia";
+
+                if (country1.Save())
+                {
+                    Console.WriteLine("Country Updated Successfully.");
+                }
+            }
+
+            else
+            {
+                Console.WriteLine("Country is you want to update is not found.");
+
+            }
+        }
+
+
+
+
+
 
 
 
@@ -191,7 +233,9 @@ namespace ContactConsolApp
             //testFindCountryByID(1);
             //testFindCountryByName("Morocco");
             //testIsCountryExistByID(1);
-            testIsCountryExistByName("Canada");
+            //testIsCountryExistByName("Canada");
+            //testAddNewCountry();
+            testUpdateCountry(1);
         }
     }
 }
