@@ -119,5 +119,11 @@ namespace ContactBusinessLayer
         }
 
 
+        public static DataTable GetAllCountries()
+        {
+            return clsCountryDataAccess.GetAllCountries();
+        }
+
+
     }
 }

@@ -225,6 +225,40 @@ namespace ConatctsDataAccessLayer
         }
             
 
+        public static DataTable GetAllCountries()
+        {
+            DataTable dataTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+
+            string query = "SELECT * FROM Countries;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                    dataTable.Load(reader);
+
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+
+            }
+
+            return dataTable;
+        }
 
 
     }

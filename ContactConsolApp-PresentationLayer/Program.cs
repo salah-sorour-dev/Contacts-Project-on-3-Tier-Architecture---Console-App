@@ -212,6 +212,21 @@ namespace ContactConsolApp
         }
 
 
+        static void ListCountries()
+        {
+            DataTable dataTable = clsCountry.GetAllCountries();
+
+            Console.WriteLine("Countries Data :");
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                Console.WriteLine($"{row["CountryID"]}, {row["CountryName"]}");
+            }
+
+
+        }
+
+
 
 
 
@@ -235,7 +250,9 @@ namespace ContactConsolApp
             //testIsCountryExistByID(1);
             //testIsCountryExistByName("Canada");
             //testAddNewCountry();
-            testUpdateCountry(1);
+            //testUpdateCountry(1);
+
+            ListCountries();
         }
     }
 }
