@@ -8,7 +8,7 @@ namespace ConatctsDataAccessLayer
     public class clsCountryDataAccess
     {
 
-        public static bool GetCountryInfoByID(int CountryID, ref string CountryName)
+        public static bool GetCountryInfoByID(int CountryID, ref string CountryName, ref string Code, ref string Phone)
         {
             bool isFound = false;
 
@@ -29,6 +29,11 @@ namespace ConatctsDataAccessLayer
                     isFound = true;
 
                     CountryName = (string)reader["CountryName"];
+                    //Code = (string)reader["Code"];
+                    Code = Convert.ToString(reader["Code"]);
+                    //Phone = (string)reader["PhoneCode"];
+                    Phone = Convert.ToString(reader["PhoneCode"]);
+
 
                 }
                 else
@@ -53,7 +58,7 @@ namespace ConatctsDataAccessLayer
         }
 
 
-        public static bool GetCountryInfoByName(ref int ID, string CountryName)
+        public static bool GetCountryInfoByName(ref int ID, string CountryName, ref string Code, ref string Phone)
         {
             bool isFound = false;
 
@@ -76,6 +81,8 @@ namespace ConatctsDataAccessLayer
 
                     ID = (int)reader["CountryID"];
                     CountryName = (string)reader["CountryName"];
+                    Code = (string)reader["Code"];
+                    Phone = (string)reader["Phone"];
                 }
                 else
                 {
@@ -189,21 +196,25 @@ namespace ConatctsDataAccessLayer
 
         }
 
-        public static bool UpdateCountry(int ID, string CountryName)
+        public static bool UpdateCountry(int ID, string CountryName, string Code, string Phone)
         {
             int rowsAffected = 0;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
             string query = @"UPDATE Countries
-                                SET CountryName = @CountryName
+                                SET CountryName = @CountryName,
+                                    Code = @Code,
+                                    PhoneCode = @PhoneCode
                                     WHERE CountryID = @CountryID;";
 
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue(@"CountryID", ID);
-            command.Parameters.AddWithValue("@CountryName", CountryName);
+            command.Parameters.AddWithValue(@"CountryName", CountryName);
+            command.Parameters.AddWithValue(@"Code", Code);
+            command.Parameters.AddWithValue(@"PhoneCode", Phone);
 
             try
             {

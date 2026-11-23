@@ -197,6 +197,8 @@ namespace ContactConsolApp
                 //Update what ever info you want
 
                 country1.Name = "Saudi Arabia";
+                country1.Code = "111";
+                country1.Phone = "324";
 
                 if (country1.Save())
                 {
@@ -220,7 +222,7 @@ namespace ContactConsolApp
 
             foreach (DataRow row in dataTable.Rows)
             {
-                Console.WriteLine($"{row["CountryID"]}, {row["CountryName"]}");
+                Console.WriteLine($"{row["CountryID"]}, {row["CountryName"]}, {row["Code"]}, {row["Phone"]}");
             }
 
 
@@ -236,7 +238,7 @@ namespace ContactConsolApp
 
         static void Main(string[] args)
         {
-            //testFindContact(10);
+            //testFindContact(1);
             //testAddNewContact();
             //testUpdateContact(2);
             //testDeleteContact(10);
@@ -250,9 +252,9 @@ namespace ContactConsolApp
             //testIsCountryExistByID(1);
             //testIsCountryExistByName("Canada");
             //testAddNewCountry();
-            //testUpdateCountry(1);
+            testUpdateCountry(1);
 
-            ListCountries();
+            //ListCountries();
         }
     }
 }

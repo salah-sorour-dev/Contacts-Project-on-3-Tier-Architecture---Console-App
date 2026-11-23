@@ -17,19 +17,25 @@ namespace ContactBusinessLayer
 
         public int ID { get; set; }
         public string Name { get; set; }
+        public string Code { get; set; }
+        public string Phone { get; set; }
 
         public clsCountry()
         {
             this.ID = -1;
             this.Name = "";
+            this.Code = "";
+            this.Phone = "";
 
             Mode = enMode.AddNew;
         }
 
-        private clsCountry(int ID, string Name)
+        private clsCountry(int ID, string Name, string Code, string Phone)
         {
             this.ID = ID;
             this.Name = Name;
+            this.Code = Code;
+            this.Phone = Phone;
 
             Mode = enMode.Update;
 
@@ -38,10 +44,12 @@ namespace ContactBusinessLayer
         public static clsCountry Find(int ID)
         {
             string CountryName = "";
+            string Code = "";
+            string Phone = "";
 
-            if (clsCountryDataAccess.GetCountryInfoByID(ID, ref CountryName))
+            if (clsCountryDataAccess.GetCountryInfoByID(ID, ref CountryName, ref Code, ref Phone))
             {
-                return new clsCountry(ID, CountryName);
+                return new clsCountry(ID, CountryName, Code, Phone);
             }
             else
             {
@@ -53,10 +61,12 @@ namespace ContactBusinessLayer
         public static clsCountry Find(string CountryName)
         {
             int CountryID = -1;
+            string Code = "";
+            string Phone = "";
 
-            if (clsCountryDataAccess.GetCountryInfoByName(ref CountryID, CountryName))
+            if (clsCountryDataAccess.GetCountryInfoByName(ref CountryID, CountryName, ref Code, ref Phone))
             {
-                return new clsCountry(CountryID, CountryName);
+                return new clsCountry(CountryID, CountryName, Code, Phone);
 
             }
             else
@@ -89,7 +99,7 @@ namespace ContactBusinessLayer
         {
             //call Data Access Layer
 
-            return clsCountryDataAccess.UpdateCountry(this.ID, this.Name);
+            return clsCountryDataAccess.UpdateCountry(this.ID, this.Name, this.Code, this.Phone);
 
         }
 
